@@ -3,283 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>曹欣宇 (Tomas) - Android高级开发工程师简历</title>
+    <title>曹新雨 (Tomas) - 资深 Android 开发工程师</title>
     <style>
-        /* 页面基础样式 */
-        body {
-            background-color: #f0f2f5;
-            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            color: #333;
-            line-height: 1.6;
-            margin: 0;
-            padding: 40px 10px;
+        :root {
+            --mi-orange: #ff6700; /* 小米橙 */
+            --tech-blue: #2563eb;
+            --dark-bg: #1a1a1a;
+            --text-main: #334155;
         }
 
-        .resume-card {
+        body {
+            background-color: #f1f5f9;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            margin: 0;
+            padding: 40px 15px;
+            color: var(--text-main);
+        }
+
+        .resume-container {
             max-width: 900px;
             margin: 0 auto;
             background: #fff;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-radius: 4px;
+            border-radius: 12px;
             overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 顶部视觉图 - 使用 Unsplash 随机技术图 */
+        .hero-image {
+            height: 200px;
+            background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80') center/cover;
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
             display: flex;
-            flex-direction: column;
+            align-items: flex-end;
+            padding: 30px 50px;
         }
 
-        /* 顶部横条 */
-        .top-bar {
-            height: 6px;
-            background: linear-gradient(90deg, #0052cc 0%, #2684ff 100%);
-        }
-
-        /* 头部信息 */
         header {
-            padding: 40px 50px;
-            background-color: #fff;
+            color: white;
             display: flex;
             justify-content: space-between;
+            width: 100%;
             align-items: flex-end;
-            border-bottom: 1px solid #eee;
         }
 
-        .header-left h1 {
-            margin: 0;
-            font-size: 32px;
-            letter-spacing: 2px;
-            color: #1a1a1a;
-        }
+        header h1 { margin: 0; font-size: 36px; letter-spacing: 2px; }
+        .header-meta { text-align: right; font-size: 14px; opacity: 0.9; }
 
-        .header-left .title {
-            font-size: 18px;
-            color: #0052cc;
-            margin-top: 5px;
-            font-weight: 500;
-        }
+        .content { padding: 40px 50px; }
 
-        .header-right {
-            text-align: right;
-            font-size: 14px;
-            color: #666;
-        }
-
-        .header-right p { margin: 3px 0; }
-
-        /* 主体内容 */
-        .main-content {
-            padding: 30px 50px 50px;
-        }
-
-        section {
-            margin-bottom: 35px;
-        }
+        section { margin-bottom: 40px; }
 
         h2 {
             font-size: 20px;
-            color: #1a1a1a;
-            border-bottom: 2px solid #0052cc;
-            padding-bottom: 5px;
+            color: var(--dark-bg);
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
             margin-bottom: 20px;
             display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
-        h2::before {
-            content: "";
-            display: inline-block;
-            width: 4px;
-            height: 20px;
-            background: #0052cc;
-            margin-right: 10px;
+        h2::after {
+            content: "PROFILE";
+            font-size: 10px;
+            color: #cbd5e1;
+            letter-spacing: 2px;
         }
 
-        /* 工作经历列表 */
-        .experience-item {
-            margin-bottom: 25px;
-        }
-
-        .exp-header {
+        /* 经历项 */
+        .exp-item { margin-bottom: 30px; }
+        .exp-title {
             display: flex;
             justify-content: space-between;
             font-weight: bold;
+            font-size: 17px;
             color: #000;
-            margin-bottom: 8px;
+        }
+        .company-tag {
+            background: var(--mi-orange);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-left: 10px;
         }
 
-        .exp-detail {
-            color: #444;
-            font-size: 15px;
+        /* 亮点卡片 */
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
         }
 
-        /* 亮点项目卡片 */
-        .project-highlight {
-            background-color: #f8fbff;
-            border-left: 4px solid #2684ff;
-            padding: 15px 20px;
+        .card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .card b { color: var(--tech-blue); display: block; margin-bottom: 5px; }
+
+        /* 随机插图 */
+        .inline-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
             margin: 15px 0;
-            border-radius: 0 4px 4px 0;
         }
 
-        .project-name {
-            font-weight: bold;
-            color: #0052cc;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        /* 标签 */
-        .tag-container {
-            margin-top: 10px;
+        .info-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 13px;
+            text-align: center;
         }
 
         .tag {
             display: inline-block;
-            background: #eef2f7;
-            color: #475d7d;
-            padding: 2px 10px;
-            border-radius: 12px;
+            background: #e2e8f0;
+            padding: 4px 12px;
+            border-radius: 20px;
             font-size: 12px;
-            margin-right: 5px;
-            margin-bottom: 5px;
-        }
-
-        /* 基础资料表格 */
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 15px;
-            background: #fbfbfb;
-            padding: 20px;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-
-        .info-item b {
-            color: #666;
-            width: 80px;
-            display: inline-block;
-        }
-
-        /* 打印适配 */
-        @media print {
-            body { background: white; padding: 0; }
-            .resume-card { box-shadow: none; border: none; max-width: 100%; }
-            .top-bar { display: none; }
+            margin: 0 5px 10px 0;
         }
 
         @media (max-width: 600px) {
-            header { flex-direction: column; align-items: flex-start; padding: 30px; }
-            .header-right { text-align: left; margin-top: 15px; }
-            .main-content { padding: 20px; }
-            .info-grid { grid-template-columns: 1fr 1fr; }
+            .highlight-grid { grid-template-columns: 1fr; }
+            .info-bar { grid-template-columns: 1fr 1fr; }
+            header { flex-direction: column; align-items: flex-start; }
+            .header-meta { text-align: left; margin-top: 10px; }
         }
     </style>
 </head>
 <body>
 
-<div class="resume-card">
-    <div class="top-bar"></div>
-    
-    <header>
-        <div class="header-left">
-            <h1>曹欣宇 (Tomas)</h1>
-            <div class="title">Android 高级开发工程师</div>
+<div class="resume-container">
+    <div class="hero-image">
+        <div class="hero-overlay">
+            <header>
+                <div class="name-box">
+                    <h1>曹新雨 <small style="font-size: 18px;">Tomas</small></h1>
+                    <div style="color: var(--mi-orange); font-weight: bold;">资深 Android 研发工程师</div>
+                </div>
+                <div class="header-meta">
+                    <p>📧 Email: [您的邮箱]</p>
+                    <p>📱 Phone: [您的电话]</p>
+                    <p>🌐 GitHub: TomasYu</p>
+                </div>
+            </header>
         </div>
-        <div class="header-right">
-            <p>📧 邮箱：[您的邮箱]</p>
-            <p>📱 电话：[您的电话]</p>
-            <p>🔗 GitHub: github.com/TomasYu</p>
-        </div>
-    </header>
+    </div>
 
-    <div class="main-content">
+    <div class="content">
         <section>
-            <h2>基础信息</h2>
-            <div class="info-grid">
-                <div class="info-item"><b>出生日期:</b> 1995-10-13</div>
-                <div class="info-item"><b>工作地点:</b> 北京</div>
-                <div class="info-item"><b>工作经验:</b> 9.72年</div>
-                <div class="info-item"><b>签约主体:</b> 小米移动软件</div>
-                <div class="info-item"><b>教育背景:</b> 本科 (软件工程)</div>
-                <div class="info-item"><b>政治面貌:</b> 群众</div>
+            <div class="info-bar">
+                <div><b>经验</b><br>9.72 年</div>
+                <div><b>坐标</b><br>北京</div>
+                <div><b>学历</b><br>本科</div>
+                <div><b>签约</b><br>小米移动软件</div>
             </div>
         </section>
 
         <section>
-            <h2>工作履历</h2>
-            <div class="experience-item">
-                <div class="exp-header">
+            <h2>工作履历 - 现职</h2>
+            <div class="exp-item">
+                <div class="exp-title">
+                    <span>北京小米移动软件有限公司 <span class="company-tag">核心业务</span></span>
+                    <span style="color: #64748b;">2020.04 - 至今</span>
+                </div>
+                <p><b>主要职责：跨端 Android 系统与应用研发</b></p>
+                <p>负责小米生态链中多形态 Android 设备的深度定制与应用开发，涵盖了从超大屏到微屏的全场景适配：</p>
+                <div class="highlight-grid">
+                    <div class="card">
+                        <b>📱 手机业务端</b>
+                        负责核心系统组件与 App 的性能优化，处理高并发场景下的 UI 响应与系统稳定性问题。
+                    </div>
+                    <div class="card">
+                        <b>🧊 智能冰箱 (带屏 IoT)</b>
+                        针对冰箱长时运行、系统资源受限的特性，优化内存管理与进程保活方案，确保家庭场景下的常驻稳定性。
+                    </div>
+                    <div class="card">
+                        <b>🔊 智能音响</b>
+                        负责语音交互逻辑在 Android 层的实现，优化系统音频链路，提升设备响应速度。
+                    </div>
+                    <div class="card">
+                        <b>⚙️ 系统定制与适配</b>
+                        深入 Android Framework 层，解决不同硬件平台下的驱动适配与性能瓶颈。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <img class="inline-img" src="https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=800&q=60" alt="Work Scene">
+
+        <section>
+            <h2>工作履历 - 过往</h2>
+            <div class="exp-item">
+                <div class="exp-title">
                     <span>北京掌阅科技信息技术有限公司</span>
-                    <span>2016.08 - 2020.04</span>
+                    <span style="color: #64748b;">2016.08 - 2020.04</span>
                 </div>
-                <div class="exp-detail">
-                    <b>高级 Android 研发工程师</b>
-                    <ul>
-                        <li>负责基于 Android 应用程序的设计、开发、调试与后期维护。</li>
-                        <li>独立负责厂商插件项目，解决项目开发中的疑难软件 Bug。</li>
-                        <li>撰写模块设计文档，并指导部门内工程师提升技术能力。</li>
-                        <li><b>荣誉：</b>荣获“掌阅先锋个人”、“优秀员工”称号。</li>
-                    </ul>
+                <div class="card" style="margin-top: 10px;">
+                    <b>核心成就：启动速度优化 1.2s</b>
+                    通过对 PathClassLoader 加载路径及系统 LoaderApk 源码的深度重写，解决了资源前缀修改引发的全量加载瓶颈，实现在前人优化基础上的再突破。
                 </div>
+                <ul style="font-size: 14px; color: #475569;">
+                    <li><b>重点项目：</b>独立负责日活千万级、年流水 6 亿的 Vivo 电子书项目，实现线上零事故。</li>
+                    <li><b>效能提升：</b>编写崩溃日志自动反混淆与邮件推送系统，将数十分钟的排查流程缩减至分钟级。</li>
+                    <li><b>攻坚突破：</b>48小时解决深度内存泄漏问题；紧急修复华为插件黑屏顽疾，确保项目按时上线。</li>
+                </ul>
             </div>
         </section>
 
         <section>
-            <h2>核心项目成就</h2>
-            
-            <div class="project-highlight">
-                <span class="project-name">⚡ 启动速度专项优化 (缩短 1.2s)</span>
-                在已有优化基础上进一步深挖，优化插件框架启动速度。深入系统层解决 <b>PathClassLoader</b> 重复加载 apk 路径问题；针对插件化开发中资源前缀修改导致的系统 <b>LoaderApk rewriteRValues</b> 全量加载问题进行精准重写，显著降低启动耗时。
+            <h2>技能 & 教育</h2>
+            <div style="margin-bottom: 20px;">
+                <span class="tag">Android Framework</span>
+                <span class="tag">IoT 设备适配</span>
+                <span class="tag">性能专项优化</span>
+                <span class="tag">自动化脚本(Python/Shell)</span>
+                <span class="tag">多端 UI 适配</span>
+                <span class="tag">Java / Kotlin</span>
+                <span class="tag">系统稳定性治理</span>
             </div>
-
-            <div class="project-highlight">
-                <span class="project-name">📚 Vivo 电子书厂商项目 (重点项目)</span>
-                负责日活 500-1000 万、年流水约 6 亿的重点项目。期间独立负责系统稳定性，保证了线上软件零事故运行。
-            </div>
-
-            <div class="project-highlight">
-                <span class="project-name">🛠️ 自动化流程工具开发</span>
-                针对崩溃查询流程（SQL修改、堆栈处理、反混淆等繁琐步骤），开发自动化处理脚本。实现配置渠道后自动推送格式化后的崩溃报告邮件，大幅提升团队研发效率。
-            </div>
-
-            <div class="project-highlight">
-                <span class="project-name">🔍 疑难 Bug 攻坚 - 华为视频插件</span>
-                项目结尾关键时刻，定位并解决了华为 Push 拉起 SDK 导致的黑屏顽疾。在缺乏直接日志的情况下通过系统调用分析找到根源，保证项目成功上线。
-            </div>
-
-            <div class="project-highlight">
-                <span class="project-name">💡 内存泄漏攻坚</span>
-                连续奋战解决 Vivo 反馈的深度内存泄漏问题，确保项目顺利通过转测并按时交付。
-            </div>
-        </section>
-
-        <section>
-            <h2>教育经历</h2>
-            <div class="experience-item">
-                <div class="exp-header">
-                    <span>安阳师范学院</span>
-                    <span>2012.09 - 2016.07</span>
-                </div>
-                <div class="exp-detail">
-                    本科 / 软件工程 (Java 方向)
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>技术栈</h2>
-            <div class="tag-container">
-                <span class="tag">Android SDK</span>
-                <span class="tag">系统源码分析</span>
-                <span class="tag">性能优化</span>
-                <span class="tag">插件化/热修复</span>
-                <span class="tag">Java/Kotlin</span>
-                <span class="tag">脚本自动化</span>
-                <span class="tag">Framework 调试</span>
-                <span class="tag">逆向分析</span>
+            <div class="exp-title" style="font-size: 15px;">
+                <span>安阳师范学院 · 软件工程 (Java)</span>
+                <span style="color: #64748b;">本科 | 2012 - 2016</span>
             </div>
         </section>
     </div>
 </div>
+
+<p style="text-align: center; color: #94a3b8; font-size: 12px; margin-top: 20px;">
+    © 2026 曹新雨 个人简历 | 由 Tomas 的 AI 助手生成
+</p>
 
 </body>
 </html>
